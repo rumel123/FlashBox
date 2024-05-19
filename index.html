@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBT Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .search-bar, .show-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input, .show-bar button {
+            padding: 10px;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>FBT Data</h1>
+
+    <div class="search-bar">
+        <input type="text" id="search-id" placeholder="Enter ID">
+        <button onclick="searchFbtIdMain()">Search fbt_id_main</button>
+        <button onclick="searchFbtTs()">Search FBT_TS</button>
+    </div>
+
+    <div class="show-bar">
+        <button onclick="showAllFbtIdMain()">Show All fbt_id_main</button>
+        <button onclick="showAllFbtTs()">Show All FBT_TS</button>
+    </div>
+
+    <h2>fbt_id_main Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Items</th>
+                <th>Amount</th>
+                <th>Date Loaded</th>
+            </tr>
+        </thead>
+        <tbody id="fbt-id-main-body">
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <h2>FBT_TS Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Reference ID</th>
+                <th>Date Updated</th>
+            </tr>
+        </thead>
+        <tbody id="fbt-ts-body">
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <script src="/index.js"></script>
+</body>
+</html>
