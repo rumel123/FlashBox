@@ -16,4 +16,9 @@ router.post("/tracking", controller.addFbtTs);
 router.put("/tracking/:id", controller.updateFbtTs);
 router.delete("/tracking/:id", controller.deleteFbtTs);
 
+//routes for scraped data 
+router.get("/scrape/:id", controller.trackingNumber);
+
+
+
 module.exports = router;

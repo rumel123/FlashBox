@@ -11,6 +11,8 @@ const getFbtTsById = "SELECT * FROM FBT_TS WHERE id = $1;";
 const addFbtTs = "INSERT INTO FBT_TS (id, reference_id, date_updated) VALUES ($1, $2, $3);";
 const deleteFbtTs = "DELETE FROM FBT_TS WHERE id = $1;";
 const updateFbtTs = "UPDATE FBT_TS SET reference_id = $1, date_updated = $2 WHERE id = $3;";
+const TrackingNumber = "SELECT reference_id FROM fbt_ts WHERE id = $1;";
+
 
 module.exports = {
     getFbtIdMain,
@@ -23,4 +25,5 @@ module.exports = {
     addFbtTs,
     deleteFbtTs,
     updateFbtTs,
+    TrackingNumber
 };

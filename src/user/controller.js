@@ -1,7 +1,19 @@
 const pool = require('../../db');
 const queries = require('./queries');
+const scrape = require('./scrape');
 
 // Handlers for fbt_id_main
+
+const trackingNumber = async (req, res) => {
+    const id = req.params.id;
+    pool.query(queries.TrackingNumber, [id], async (error, results) => {
+        if (error) throw error; 
+        const trackingNumber = results.rows[0].reference_id;
+        const trackingInfo = await scrape.getTrackingInfo(trackingNumber);
+        res.status(200).json(trackingInfo);
+    });
+};
+
 const getFbtIdMain = (req, res) => {
     pool.query(queries.getFbtIdMain, (error, results) => {
         if (error) throw error;
@@ -110,4 +122,5 @@ module.exports = {
     addFbtTs,
     updateFbtTs,
     deleteFbtTs,
+    trackingNumber
 };
