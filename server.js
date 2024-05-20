@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fbtRoutes = require('./src/user/routes');
+//const scrape = require('../../scrape');
 
 const app = express();
 const port = 3000;

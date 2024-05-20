@@ -1,6 +1,6 @@
 const pool = require('../../db');
 const queries = require('./queries');
-const scrape = require('./scrape');
+//const scrape = require('./scrape');
 
 // Handlers for fbt_id_main
 
