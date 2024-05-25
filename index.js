@@ -1,65 +1,47 @@
-function searchFbtIdMain() {
-    const id = document.getElementById('search-id').value;
-    fetch(`/api/v1/fbt/${id}`)
-        .then(response => response.json())
-        .then(data => {
-            const fbtIdMainBody = document.getElementById('fbt-id-main-body');
-            fbtIdMainBody.innerHTML = '';
-            if (data.length) {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${data[0].id}</td><td>${data[0].sender}</td><td>${data[0].receiver}</td><td>${data[0].items}</td><td>${data[0].amount}</td><td>${data[0].date_loaded}</td>`;
-                fbtIdMainBody.appendChild(tr);
-            } else {
-                fbtIdMainBody.innerHTML = '<tr><td colspan="6">No data found</td></tr>';
-            }
-        })
-        .catch(error => console.error('Error fetching data:', error));
-}
+async function fetchData(url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  }
+  
+  function renderTableData(tableId, data, columns) {
+    const tableBody = document.getElementById(tableId);
+    tableBody.innerHTML = '';
+    data.forEach(row => {
+      const tr = document.createElement('tr');
+      columns.forEach(column => {
+        const td = document.createElement('td');
+        td.textContent = row[column];
+        tr.appendChild(td);
+      });
+      tableBody.appendChild(tr);
+    });
+  }
+  
+  async function showAllFbtIdMain() {
 
-function searchFbtTs() {
-    const id = document.getElementById('search-id').value;
-    fetch(`/api/v1/fbt/tracking/${id}`)
-        .then(response => response.json())
-        .then(data => {
-            const fbtTsBody = document.getElementById('fbt-ts-body');
-            fbtTsBody.innerHTML = '';
-            if (data.length) {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${data[0].id}</td><td>${data[0].reference_id}</td><td>${data[0].date_updated}</td>`;
-                fbtTsBody.appendChild(tr);
-            } else {
-                fbtTsBody.innerHTML = '<tr><td colspan="3">No data found</td></tr>';
-            }
-        })
-        .catch(error => console.error('Error fetching data:', error));
-}
-
-function showAllFbtIdMain() {
-    fetch('/api/v1/fbt')
-        .then(response => response.json())
-        .then(data => {
-            const fbtIdMainBody = document.getElementById('fbt-id-main-body');
-            fbtIdMainBody.innerHTML = '';
-            data.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${row.id}</td><td>${row.sender}</td><td>${row.receiver}</td><td>${row.items}</td><td>${row.amount}</td><td>${row.date_loaded}</td>`;
-                fbtIdMainBody.appendChild(tr);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-}
-
-function showAllFbtTs() {
-    fetch('/api/v1/fbt/tracking')
-        .then(response => response.json())
-        .then(data => {
-            const fbtTsBody = document.getElementById('fbt-ts-body');
-            fbtTsBody.innerHTML = '';
-            data.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${row.id}</td><td>${row.reference_id}</td><td>${row.date_updated}</td>`;
-                fbtTsBody.appendChild(tr);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-}
+    console.log("check");
+    try {
+      const data = await fetchData('/api/v1/fbt/:id'); // Adjust endpoint if needed
+      renderTableData('fbt-id-main-body', data, ['id', 'sender', 'receiver', 'items', 'amount', 'date_loaded']);
+    } catch (error) {
+      console.error('Error fetching fbt_id_main data:', error);
+    }
+  }
+  
+  async function showAllFbtTs() {
+    try {
+      const data = await fetchData('/api/v1/fbt/'); // Adjust endpoint if needed
+      renderTableData('fbt-ts-body', data, ['id', 'reference_id', 'date_updated']);
+    } catch (error) {
+      console.error('Error fetching FBT_TS data:', error);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.show-bar button:nth-child(1)').addEventListener('click', showAllFbtIdMain);
+    document.querySelector('.show-bar button:nth-child(2)').addEventListener('click', showAllFbtTs);
+  });
+  
