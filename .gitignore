@@ -2,4 +2,6 @@ node_modules/
 .env
 dist/
 .DS_Store
-sequelize/config/config.json
+flashbox_fe\node_modules
+
+

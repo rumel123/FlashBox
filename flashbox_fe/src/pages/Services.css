@@ -1,0 +1,24 @@
+.maintenance {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/background.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .maintenance h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .maintenance p {
+    font-size: 1.5rem;
+  }
+  

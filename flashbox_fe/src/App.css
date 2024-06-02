@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  min-height: 100vh; /* Ensures the body takes the full height of the viewport */
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh; /* Ensures the App takes the full height of the viewport */
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  margin-top: 20px;
+}
+
+.tracking-status {
+  margin-top: 20px;
+}
+
+.tracking-status h2 { 
+  margin-bottom: 10px;
+}
+
+.tracking-status p {
+  font-size: 18px;
+}

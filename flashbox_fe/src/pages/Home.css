@@ -1,0 +1,16 @@
+.home {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/background_main.png') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .home-header {
+    margin-bottom: 20px;
+  }
+  

@@ -3,7 +3,7 @@ const controller = require('./controller');
 //const scrape = require('../../scrape');
 const router = Router();
 
-// Routes for fbt_id_main
+// Routes for trackingfbt
 router.get("/", controller.getFbtIdMain);
 router.post("/", controller.addFbtIdMain);
 router.get("/:id", controller.getFbtIdMainById);

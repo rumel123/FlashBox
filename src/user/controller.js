@@ -2,7 +2,7 @@ const pool = require('../../db');
 const queries = require('./queries');
 //const scrape = require('./scrape');
 
-// Handlers for fbt_id_main
+// Handlers for trackingfbt
 
 const trackingNumber = async (req, res) => {
     const id = req.params.id;

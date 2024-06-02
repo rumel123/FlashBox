@@ -1,9 +1,9 @@
-// Create fbt_id_main queries
-const getFbtIdMain = "SELECT * FROM fbt_id_main;";
-const getFbtIdMainById = "SELECT * FROM fbt_id_main WHERE id = $1;";
-const addFbtIdMain = "INSERT INTO fbt_id_main (sender, receiver, items, amount, date_loaded) VALUES ($1, $2, $3, $4, $5);";
-const deleteFbtIdMain = "DELETE FROM fbt_id_main WHERE id = $1;";
-const updateFbtIdMain = "UPDATE fbt_id_main SET sender = $1, receiver = $2, items = $3, amount = $4, date_loaded = $5 WHERE id = $6;";
+// Create trackingfbt queries
+const getFbtIdMain = "SELECT * FROM trackingfbt;";
+const getFbtIdMainById = "SELECT * FROM trackingfbt WHERE id = $1;";
+const addFbtIdMain = "INSERT INTO trackingfbt (sender, receiver, items, amount, date_loaded) VALUES ($1, $2, $3, $4, $5);";
+const deleteFbtIdMain = "DELETE FROM trackingfbt WHERE id = $1;";
+const updateFbtIdMain = "UPDATE trackingfbt SET sender = $1, receiver = $2, items = $3, amount = $4, date_loaded = $5 WHERE id = $6;";
 
 // Create FBT_TS queries
 const getFbtTs = "SELECT * FROM FBT_TS;";
