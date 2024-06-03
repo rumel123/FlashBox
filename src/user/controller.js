@@ -111,6 +111,14 @@ const deleteFbtTs = (req, res) => {
     });
 };
 
+const getTrackingfbt_auditSTATUS = (req, res) => {
+    const id = req.params.id;
+    pool.query(queries.getTrackingfbt_auditSTATUS, [id], (error, results) =>{
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    });
+}
+
 module.exports = {
     getFbtIdMain,
     getFbtIdMainById,
@@ -122,5 +130,6 @@ module.exports = {
     addFbtTs,
     updateFbtTs,
     deleteFbtTs,
-    trackingNumber
+    trackingNumber,
+    getTrackingfbt_auditSTATUS
 };

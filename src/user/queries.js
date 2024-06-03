@@ -13,6 +13,8 @@ const deleteFbtTs = "DELETE FROM FBT_TS WHERE id = $1;";
 const updateFbtTs = "UPDATE FBT_TS SET reference_id = $1, date_updated = $2 WHERE id = $3;";
 const TrackingNumber = "SELECT reference_id FROM fbt_ts WHERE id = $1;";
 
+// Routes for trackingfbt_audit tracking status
+const getTrackingfbt_auditSTATUS = "SELECT * from trackingfbt_audit where tracking_id=$1;";
 
 module.exports = {
     getFbtIdMain,
@@ -25,5 +27,6 @@ module.exports = {
     addFbtTs,
     deleteFbtTs,
     updateFbtTs,
-    TrackingNumber
+    TrackingNumber,
+    getTrackingfbt_auditSTATUS
 };

@@ -16,8 +16,14 @@ router.post("/tracking", controller.addFbtTs);
 router.put("/tracking/:id", controller.updateFbtTs);
 router.delete("/tracking/:id", controller.deleteFbtTs);
 
+// Routes for trackingfbt_audit tracking status
+
+router.get("/status/:id", controller.getTrackingfbt_auditSTATUS);
+
 //routes for scraped data 
 router.get("/scrape/:id", controller.trackingNumber);
+
+
 
 
 
