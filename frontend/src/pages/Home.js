@@ -14,8 +14,7 @@ const Home = () => {
   return (
     <div className="home">
       <header className="home-header">
-        <h1>Welcome to MyWebsite</h1>
-        <p>This is a simple example of a React app with a navigation bar and a search bar.</p>
+
       </header>
       <SearchBar onSearch={handleSearch} />
       {trackingNumber && <TrackingStatus trackingNumber={trackingNumber} />}
