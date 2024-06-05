@@ -6,40 +6,28 @@ const fbtRoutes = require('./src/user/routes');
 const app = express();
 const port = 3000;
 
+// CORS Middleware for handling cross-origin requests
 app.use(cors());
 
-
+// Middleware for parsing JSON bodies
 app.use(express.json());
+
+// Static files middleware (assuming your React build is in 'frontend/build')
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+// API Routes
 app.use('/api/v1/fbt', fbtRoutes);
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/index.js', (req, res) =>{
-    res.sendFile(path.join(__dirname, 'index.js'));
-})
-
+// Additional headers for CORS can be set universally here
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*"); // adjust in production
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
-app.get('/api/v1/fbt/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const result = await pool.query('SELECT * FROM trackingfbt WHERE id = $1', [id]);
-        if (result.rows.length > 0) {
-            res.json(result.rows[0]);
-        } else {
-            res.status(404).json({message: 'Data not found'});
-        }
-    } catch (error) {
-        console.error('Database query error', error.stack);
-        res.status(500).json({message: 'Server error'});
-    }
+// Serve the React application's index.html for all other routes (SPA behavior)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
-
-app.listen(port, () => console.log(`app listening on port ${port}`));
+app.listen(port, () => console.log(`App listening on port ${port}`));
